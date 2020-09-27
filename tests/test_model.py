@@ -1,6 +1,7 @@
 import pytest
 
 from pydantic_persitence import PersistenceModel, base, exceptions
+from pydantic_persitence.base import BaseBackend, BaseBackendConfig
 
 
 class TestPersistenceModelEmpty(PersistenceModel):
@@ -13,17 +14,26 @@ class TestPersistenceModelNoPkField(base.PersistenceModel):
     _primary_key = "t1"
 
 
+class TestPersistenceModelNoBackend(base.PersistenceModel):
+    """Model with no backend"""
+
+    t1: str
+    _primary_key = "t1"
+
+
 class TestPersistenceModel1(base.PersistenceModel):
     """Valid minimal model"""
 
     t1: str
     _primary_key = "t1"
+    _backend = BaseBackend("TestPersistenceModel3", BaseBackendConfig())
 
 
 class TestPersistenceModel2(base.PersistenceModel):
     """Valid minimal model"""
 
     t2: str
+    _backend = BaseBackend("TestPersistenceModel3", BaseBackendConfig())
 
     def _primary_key(self) -> str:  # type: ignore
         return "t2"
@@ -35,6 +45,7 @@ class TestPersistenceModel3(base.PersistenceModel):
     t3: str
     v1: str
     _primary_key = "t3"
+    _backend = BaseBackend("TestPersistenceModel3", BaseBackendConfig())
 
 
 def test_base_model() -> None:

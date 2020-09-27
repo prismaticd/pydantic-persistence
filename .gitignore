@@ -137,3 +137,4 @@ dmypy.json
 poetry.lock
 dist/
 requirements.txt
+temp_test_data/
