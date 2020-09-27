@@ -1,7 +1,8 @@
-# pydantic-persitence
-This is a Python Package testing ground with Github Actions
+# pydantic-persistence
+Pydantic Persistence allow you to load and save your Pydantic Models to different backends
+To get started you only need to define an _backend
 
-![Tests](https://github.com/prismaticd/pydantic-persitence/workflows/Tests/badge.svg?branch=master)
+![Tests](https://github.com/prismaticd/pydantic-persistence/workflows/Tests/badge.svg?branch=master)
 ![Code Coverage](https://img.shields.io/badge/code%20coverage-100%25-success.svg)
 
 ## Example
@@ -9,8 +10,8 @@ This is a Python Package testing ground with Github Actions
 ```python
 from enum import Enum
 
-from pydantic_persitence import PersistenceModel
-from pydantic_persitence.backend.jsonfs import JsonFs
+from pydantic_persistence import PersistenceModel
+from pydantic_persistence.backend.jsonfs import JsonFs
 
 
 class BeerType(Enum):

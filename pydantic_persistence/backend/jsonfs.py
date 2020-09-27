@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from typing import List, Optional, Union
 
-from pydantic_persitence.base import BaseBackendConfig, ListDictBackend
+from pydantic_persistence.base import BaseBackendConfig, ListDictBackend
 
 
 class JsonFsConfig(BaseBackendConfig):

@@ -1,7 +1,7 @@
 import pytest
 
-from pydantic_persitence import PersistenceModel, base, exceptions
-from pydantic_persitence.base import BaseBackend, BaseBackendConfig
+from pydantic_persistence import PersistenceModel, base, exceptions
+from pydantic_persistence.base import BaseBackend, BaseBackendConfig
 
 
 class TestPersistenceModelEmpty(PersistenceModel):
@@ -50,10 +50,13 @@ class TestPersistenceModel3(base.PersistenceModel):
 
 def test_base_model() -> None:
     """Test import of model"""
-    with pytest.raises(exceptions.PydanticPersitenceWrongSetup):
+    with pytest.raises(exceptions.PydanticPersistenceWrongSetup):
         TestPersistenceModelEmpty()
 
-    with pytest.raises(exceptions.PydanticPersitenceWrongSetup):
+    with pytest.raises(exceptions.PydanticPersistenceWrongSetup):
+        TestPersistenceModelNoPkField()
+
+    with pytest.raises(exceptions.PydanticPersistenceWrongSetup):
         TestPersistenceModelNoPkField()
 
     p1 = TestPersistenceModel1(t1="abc")

@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "pydantic-persitence"
+name = "pydantic-persistence"
 version = "0.0.1"
 description = ""
 authors = ["Benoit Chabord <benoit.chabord@prismaticdigital.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/prismaticd/pydantic-persitence"
-repository = "https://github.com/prismaticd/pydantic-persitence"
-documentation = "https://pydantic-persitence.readthedocs.io"
+homepage = "https://github.com/prismaticd/pydantic-persistence"
+repository = "https://github.com/prismaticd/pydantic-persistence"
+documentation = "https://pydantic-persistence.readthedocs.io"
 
 
 [tool.poetry.dependencies]
@@ -39,11 +39,11 @@ isort = "^5.5.3"
 pre-commit = "^2.7.1"
 
 [tool.coverage.paths]
-source = ["pydantic_persitence", "*/site-packages"]
+source = ["pydantic_persistence", "*/site-packages"]
 
 [tool.coverage.run]
 branch = true
-source = ["pydantic_persitence"]
+source = ["pydantic_persistence"]
 
 [tool.coverage.report]
 show_missing = true

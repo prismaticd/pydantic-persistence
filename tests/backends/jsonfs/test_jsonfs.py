@@ -3,8 +3,8 @@ from pathlib import Path
 
 import pytest
 
-from pydantic_persitence import PersistenceModel, exceptions
-from pydantic_persitence.backend.jsonfs import JsonFs, JsonFsConfig
+from pydantic_persistence import PersistenceModel, exceptions
+from pydantic_persistence.backend.jsonfs import JsonFs, JsonFsConfig
 
 CURRENT_FOLDER = Path(__file__).parent
 TEST_DATA_FOLDER = CURRENT_FOLDER / "./temp_test_data/"

@@ -5,7 +5,7 @@ from typing import Any, Dict, Iterable, List, Optional, Type, TypeVar
 
 import pydantic
 
-from pydantic_persitence.exceptions import ObjectNotFound, PydanticPersitenceWrongSetup
+from pydantic_persistence.exceptions import ObjectNotFound, PydanticPersistenceWrongSetup
 
 PM = TypeVar("PM", bound="PersistenceModel")
 
@@ -31,18 +31,18 @@ class PersistenceModel(pydantic.BaseModel):
 
     def _init_slots(self) -> None:
         if not hasattr(self, "_primary_key"):
-            raise PydanticPersitenceWrongSetup(
+            raise PydanticPersistenceWrongSetup(
                 "_primary_key is not defined, define an attribute or function returning the primary key field name"
             )
         if callable(self._primary_key):
             self._primary_key = self._primary_key()
         if not hasattr(self, self._primary_key):  # type: ignore
-            raise PydanticPersitenceWrongSetup(
+            raise PydanticPersistenceWrongSetup(
                 f"_primary_key is defined but can't find an attribute called "
                 f"[{self._primary_key}] in class {self.__class__.__name__}"
             )
         if not hasattr(self, "_backend"):  # type: ignore
-            raise PydanticPersitenceWrongSetup(f"_backend is not defined in class {self.__class__.__name__}")
+            raise PydanticPersistenceWrongSetup(f"_backend is not defined in class {self.__class__.__name__}")
         if callable(self._backend):
             self._backend = self._backend()
 

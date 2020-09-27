@@ -6,15 +6,15 @@ Reference
     :backlinks: none
 
 
-pydantic_persitence.main.echo
+pydantic_persistence.main.echo
 ---------------------------
 
-.. automodule:: pydantic_persitence.main.echo
+.. automodule:: pydantic_persistence.main.echo
    :members:
 
 
-pydantic_persitence.main.what_is_my_ip
+pydantic_persistence.main.what_is_my_ip
 ------------------------------------
 
-.. automodule:: pydantic_persitence.main.what_is_my_ip
+.. automodule:: pydantic_persistence.main.what_is_my_ip
    :members:

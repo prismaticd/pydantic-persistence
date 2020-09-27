@@ -1,7 +1,7 @@
 from enum import Enum
 
-from pydantic_persitence import PersistenceModel
-from pydantic_persitence.backend.jsonfs import JsonFs
+from pydantic_persistence import PersistenceModel
+from pydantic_persistence.backend.jsonfs import JsonFs
 
 
 class BeerType(Enum):

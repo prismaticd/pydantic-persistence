@@ -3,6 +3,6 @@ select = ANN,B,B9,BLK,C,D,DAR,E,F,I,S,W
 ignore = E203,E501,W503,D100,D415,D104,D107,D105
 max-line-length = 120
 max-complexity = 10
-application-import-names = pydantic_persitence_python,tests
+application-import-names = pydantic_persistence_python,tests
 docstring-convention = google
 per-file-ignores = tests/*:S101
