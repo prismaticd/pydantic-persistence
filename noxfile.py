@@ -5,9 +5,9 @@ from typing import Any
 import nox
 from nox.sessions import Session
 
-package = "prismatic_package"
+package = "pydantic_persitence"
 nox.options.sessions = "pre_commit", "isort", "black", "lint", "safety", "mypy", "tests"
-locations = "prismatic_package", "tests", "noxfile.py", "docs/conf.py"
+locations = "pydantic_persitence", "tests", "noxfile.py", "docs/conf.py"
 
 
 def install_with_constraints(session: Session, *args: str, **kwargs: Any) -> None:

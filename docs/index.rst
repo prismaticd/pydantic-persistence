@@ -1,7 +1,7 @@
 The Prismatic Package Example
 ==============================
 
-The example project for https://github.com/prismaticd/prismatic-package
+The example project for https://github.com/prismaticd/pydantic-persitence
 
 
 Installation
@@ -12,7 +12,7 @@ run this command in your terminal:
 
 .. code-block:: console
 
-   $ pip install prismatic-package
+   $ pip install pydantic-persitence
 
 
 Usage
@@ -22,7 +22,7 @@ Pismatic Package Example Python's usage looks like:
 
 .. code-block:: console
 
-   $  prismatic-package [OPTIONS]
+   $  pydantic-persitence [OPTIONS]
 
 
 

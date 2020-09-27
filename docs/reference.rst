@@ -6,15 +6,15 @@ Reference
     :backlinks: none
 
 
-prismatic_package.main.echo
+pydantic_persitence.main.echo
 ---------------------------
 
-.. automodule:: prismatic_package.main.echo
+.. automodule:: pydantic_persitence.main.echo
    :members:
 
 
-prismatic_package.main.what_is_my_ip
+pydantic_persitence.main.what_is_my_ip
 ------------------------------------
 
-.. automodule:: prismatic_package.main.what_is_my_ip
+.. automodule:: pydantic_persitence.main.what_is_my_ip
    :members:

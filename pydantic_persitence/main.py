@@ -21,7 +21,7 @@ def echo() -> None:
 def what_is_my_ip() -> None:
     """Display information about your ip in color
 
-    Requires to install with the prismatic-package[my_ip] optional requirements
+    Requires to install with the pydantic-persitence[my_ip] optional requirements
     """
     import requests
     from pjson import core  # type: ignore

@@ -1,7 +1,7 @@
 import pytest
 from click.testing import CliRunner
 
-from prismatic_package import main
+from pydantic_persitence import main
 
 
 @pytest.fixture
