@@ -12,12 +12,7 @@ documentation = "https://pydantic-persitence.readthedocs.io"
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0'"
-click = "^7.1.1"
-requests = {version = "^2.23.0", optional = true}
-pjson = {version = "^1.1", optional = true}
-
-[tool.poetry.extras]
-my_ip = ["requests", "pjson"]
+pydantic = "~1.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1"
@@ -31,7 +26,6 @@ flake8-bugbear = "^20.1.2"
 flake8-bandit = "^2.1.2"
 safety = "^1.8.5"
 mypy = "^0.782"
-flake8-annotations = "^2.0.0"
 typeguard = "^2.7.1"
 flake8-docstrings = "^1.5.0"
 darglint = "^1.1.2"
@@ -43,9 +37,6 @@ nox = "^2020.8.22"
 bump2version = "^1.0.0"
 isort = "^5.5.3"
 pre-commit = "^2.7.1"
-
-[tool.poetry.scripts]
-pydantic-persitence = "pydantic_persitence.main:cli"
 
 [tool.coverage.paths]
 source = ["pydantic_persitence", "*/site-packages"]
@@ -83,3 +74,8 @@ exclude = '''/(
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+
+[tool.isort]
+line_length = 120
+skip = ["node_modules", "migrations"]
+known_third_party = ["tests", "pydantic"]

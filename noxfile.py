@@ -69,7 +69,6 @@ def lint(session: Session) -> None:
     install_with_constraints(
         session,
         "flake8",
-        "flake8-annotations",
         "flake8-bandit",
         "flake8-black",
         "flake8-bugbear",
@@ -108,7 +107,7 @@ def mypy(session: Session) -> None:
 def tests(session: Session) -> None:
     """Run the test suite."""
     args = session.posargs or ["--cov", "-m", "not e2e"]
-    session.run("poetry", "install", "--extras", "my_ip", "--no-dev", external=True)
+    session.run("poetry", "install", "--no-dev", external=True)
     session.install("coverage[toml]", "pytest", "pytest-cov", "pytest-mock")
     session.run("pytest", *args)
 
