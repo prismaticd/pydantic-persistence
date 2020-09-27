@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pydantic-persitence"
-version = "1.0.0"
+version = "0.0.1"
 description = ""
 authors = ["Benoit Chabord <benoit.chabord@prismaticdigital.com>"]
 license = "MIT"
