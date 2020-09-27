@@ -1,0 +1,19 @@
+# .github/workflows/test-pypi.yml
+name: Release
+on:
+  release:
+    types: [published]
+jobs:
+  test_pypi:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
+        architecture: x64
+    - run: pip install nox poetry
+    - run: poetry build
+    # Remove the following line and --repository testpypi on the publish line to release to real pypi
+    - run: poetry config repositories.testpypi https://test.pypi.org/legacy/
+    - run: poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }} --repository testpypi
