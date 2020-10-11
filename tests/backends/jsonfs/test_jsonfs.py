@@ -21,39 +21,14 @@ def rm_tree(pth: Path) -> None:
     pth.rmdir()
 
 
-class BeerType(Enum):
-    """An enum for testing"""
-
-    IPA = "Indian Pale Ale"
-    APA = "American Pale Ale"
-    STOUT = "Stout"
-
-
-class Beer(PersistenceModel):
-    """A Beer for testing"""
-
-    _backend = JsonLocalStorage("beer", JsonLocalStorageConfig(base_folder=TEST_DATA_FOLDER))
-    _primary_key = "beer_id"
-    beer_id: str
-    beer_name: str
-    beer_type: BeerType
-
-
 def test_backend() -> None:
     """Main testing function"""
+    backend = JsonLocalStorage("beer", JsonLocalStorageConfig(base_folder=TEST_DATA_FOLDER))
     JsonLocalStorageConfig(base_folder=None)
 
     if TEST_DATA_FOLDER.exists():
         rm_tree(TEST_DATA_FOLDER)
     TEST_DATA_FOLDER.mkdir()
-    b = Beer(beer_id="epic-thunder", beer_name="Epic Thunder IPA", beer_type=BeerType.IPA)
-    b.save()
 
-    t = Beer.get("epic-thunder")
-    assert t.beer_name == "Epic Thunder IPA"
-
-    with pytest.raises(exceptions.ObjectNotFound):
-        Beer.get("benos-stout")
-
-    s = Beer(beer_id="benos-stout", beer_name="Benos Stout", beer_type=BeerType.STOUT)
-    s.save()
+    from tests.test_auto import full_suite
+    full_suite(backend)
