@@ -5,7 +5,7 @@ from typing import List, Optional, Union
 from pydantic_persistence.base import BaseBackendConfig, ListDictBackend
 
 
-class JsonFsConfig(BaseBackendConfig):
+class JsonLocalStorageConfig(BaseBackendConfig):
     """Json file system base backend"""
 
     base_folder: Path
@@ -18,26 +18,29 @@ class JsonFsConfig(BaseBackendConfig):
         self.base_folder = base_folder
 
 
-class JsonFs(ListDictBackend):
+class JsonLocalStorage(ListDictBackend):
     """Json file system backend"""
 
-    backend_config: JsonFsConfig
+    backend_config: JsonLocalStorageConfig
 
-    def __init__(self, table_name: str, backend_config: Optional[JsonFsConfig] = None):
+    def __init__(self, table_name: str, backend_config: Optional[JsonLocalStorageConfig] = None):
         if not backend_config:
-            backend_config = JsonFsConfig()
+            backend_config = JsonLocalStorageConfig()
         super().__init__(table_name, backend_config)
 
     def get_file_path(self) -> Path:
+        """Return the path of the table on disk"""
         return self.backend_config.base_folder / f"{self.table_name}.json"
 
     def get_data(self) -> List[dict]:
+        """Return the data as list of dict from disk"""
         if self.get_file_path().exists():
             return json.loads(self.get_file_path().read_text())
         else:
             return []
 
     def save_data(self, data: List[dict]) -> None:
+        """Save the data back to disk"""
         if not self.get_file_path().exists():
             self.get_file_path().touch()
         self.get_file_path().write_text(json.dumps(data))

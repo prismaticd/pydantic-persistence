@@ -1,18 +1,22 @@
 from enum import Enum
 
 from pydantic_persistence import PersistenceModel
-from pydantic_persistence.backend.jsonfs import JsonFs
+from pydantic_persistence.backend.json_local import JsonLocalStorage
 
 
 class BeerType(Enum):
+    """Example of the use of en Enum"""
+
     IPA = "Indian Pale Ale"
     APA = "American Pale Ale"
     STOUT = "Stout"
 
 
 class Beer(PersistenceModel):
+    """Example of a model with 3 fields using the LocalJson Backend"""
+
     # Will create a beer.json in the current folder
-    _backend = JsonFs("beer")
+    _backend = JsonLocalStorage("beer")
     # Will use the field beer_id as a primary key
     _primary_key = "beer_id"
 

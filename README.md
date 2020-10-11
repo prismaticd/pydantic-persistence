@@ -11,7 +11,7 @@ To get started you only need to define an _backend
 from enum import Enum
 
 from pydantic_persistence import PersistenceModel
-from pydantic_persistence.backend.jsonfs import JsonFs
+from pydantic_persistence.backend.json_local import JsonLocalStorage
 
 
 class BeerType(Enum):
@@ -22,7 +22,7 @@ class BeerType(Enum):
 
 class Beer(PersistenceModel):
     # Will create a beer.json in the current folder
-    _backend = JsonFs("beer")
+    _backend = JsonLocalStorage("beer")
     # Will use the field beer_id as a primary key
     _primary_key = "beer_id"
 

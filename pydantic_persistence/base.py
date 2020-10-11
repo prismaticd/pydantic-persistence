@@ -52,9 +52,11 @@ class PersistenceModel(pydantic.BaseModel):
 
     @classmethod
     def get_pk_field(cls) -> str:
+        """Return the primary key field name"""
         return cls._primary_key
 
     def get_pk_value(self) -> Any:
+        """Return the primary key value"""
         return getattr(self, self.get_pk_field())
 
     @classmethod
@@ -159,6 +161,8 @@ class BaseBackend:
 
 
 class ListDictBackend(BaseBackend):
+    """This backend is the base of any backend that reads a full list and saves a full list back"""
+
     def get_data(self) -> List[dict]:
         """Common method that returns a list of Dict, Backend Specific"""
         raise NotImplementedError
@@ -211,7 +215,7 @@ class ListDictBackend(BaseBackend):
             raise NotImplementedError
 
     def list(self, source_model: Type[P], limit: Optional[int] = None) -> Iterable[P]:
-        """return a all objects"""
+        """Return a all objects"""
         return_list: List[P] = []
         for index, obj in enumerate(self.get_data()):
             return_list.append(source_model(**obj))
@@ -220,6 +224,7 @@ class ListDictBackend(BaseBackend):
         return return_list
 
     def save(self, model_instance: P) -> None:
+        """Save a instance back in the list, this does a full read again (in case something has changed in the list)"""
         to_save_return_list: List[dict] = []
         found = False
         for obj in self.get_data():
@@ -240,6 +245,7 @@ class ListDictBackend(BaseBackend):
         self.save_data(to_save_return_list)
 
     def delete(self, model_instance: P) -> None:
+        """Delete an instance the list, this does a full read again (in case something has changed in the list)"""
         to_save_return_list: List[dict] = []
         for obj in self.get_data():
             pk = obj.get(model_instance.get_pk_field())
