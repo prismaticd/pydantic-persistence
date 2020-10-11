@@ -1,6 +1,5 @@
 # pydantic-persistence
-Pydantic Persistence allow you to load and save your Pydantic Models to different backends
-To get started you only need to define an _backend
+Pydantic Persistence allows you to load and save your Pydantic Models to different backends To get started you only need to define a _backend property
 
 ![Tests](https://github.com/prismaticd/pydantic-persistence/workflows/Tests/badge.svg?branch=master)
 ![Code Coverage](https://img.shields.io/badge/code%20coverage-100%25-success.svg)
