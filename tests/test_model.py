@@ -1,51 +1,8 @@
 import pytest
 
-from pydantic_persistence import PersistenceModel, base, exceptions
-from pydantic_persistence.base import BaseBackend, BaseBackendConfig
-
-
-class TestPersistenceModelEmpty(PersistenceModel):
-    """Empty model should not work because does not define primary key field"""
-
-
-class TestPersistenceModelNoPkField(base.PersistenceModel):
-    """Empty model should not work because does not have a field called t1"""
-
-    _primary_key = "t1"
-
-
-class TestPersistenceModelNoBackend(base.PersistenceModel):
-    """Model with no backend"""
-
-    t1: str
-    _primary_key = "t1"
-
-
-class TestPersistenceModel1(base.PersistenceModel):
-    """Valid minimal model"""
-
-    t1: str
-    _primary_key = "t1"
-    _backend = BaseBackend("TestPersistenceModel3", BaseBackendConfig())
-
-
-class TestPersistenceModel2(base.PersistenceModel):
-    """Valid minimal model"""
-
-    t2: str
-    _backend = BaseBackend("TestPersistenceModel3", BaseBackendConfig())
-
-    def _primary_key(self) -> str:  # type: ignore
-        return "t2"
-
-
-class TestPersistenceModel3(base.PersistenceModel):
-    """Valid minimal model with one additional attribute"""
-
-    t3: str
-    v1: str
-    _primary_key = "t3"
-    _backend = BaseBackend("TestPersistenceModel3", BaseBackendConfig())
+from pydantic_persistence import base, exceptions
+from tests.basic_models import TestPersistenceModelEmpty, TestPersistenceModelNoPkField, TestPersistenceModel1, \
+    TestPersistenceModel2, TestPersistenceModel3
 
 
 def test_base_model() -> None:
